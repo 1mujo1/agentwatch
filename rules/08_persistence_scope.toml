@@ -1,0 +1,12 @@
+name = "Persistence or out-of-scope write"
+description = "File created in a shell profile, cron, SSH keys, or outside the allowed folders."
+severity = "high"
+risk_score = 73
+tags = ["AW-PERSIST"]
+type = "match"
+
+[[match]]
+source = "audit"
+kind = "create"
+field = "paths"
+pattern = '(\.bashrc|\.profile|\.zshrc|crontab|/etc/cron|authorized_keys)|^/(?!workspace/|tmp/|dev/|proc/|home/agent/)'

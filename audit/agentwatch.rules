@@ -1,0 +1,14 @@
+## 1. every command the agent runs (Sysmon Event 1)
+-a always,exit -F arch=b64 -S execve -F uid=4242 -k aw_exec
+
+## 2. every network connection attempt (Sysmon Event 3)
+-a always,exit -F arch=b64 -S connect -F uid=4242 -k aw_net
+
+## 3. file deletes and renames (Sysmon Event 23)
+-a always,exit -F arch=b64 -S unlink,unlinkat,rename,renameat,renameat2 -F uid=4242 -k aw_delete
+
+## 4. file creates (Sysmon Event 11)
+-a always,exit -F arch=b64 -S openat -F a2&0100 -F uid=4242 -k aw_create
+
+## 5. reading the secret (Sysmon cannot do this)
+-a always,exit -F path=/home/murad/agentwatch/workspace/.env -F perm=r -F uid=4242 -k aw_secret

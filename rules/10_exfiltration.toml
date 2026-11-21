@@ -1,0 +1,9 @@
+name = "Exfiltration attempt"
+description = "Secret access followed by a network tool, a blocked request, or a proxy bypass."
+severity = "high"
+risk_score = 90
+tags = ["AW-EXFIL"]
+type = "sequence"
+first = "AW-SECRETS"
+then = ["AW-NETTOOL", "AW-BLOCKED", "AW-EGRESS"]
+within_seconds = 60

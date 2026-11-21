@@ -1,0 +1,15 @@
+
+name = "Direct egress (proxy bypass)"
+description = "The agent tried to connect to an address that is neither the proxy nor Docker DNS."
+severity = "high"
+risk_score = 73
+tags = ["AW-EGRESS"]
+type = "match"
+
+[[match]]
+source = "audit"
+kind = "net"
+field = "dest"
+pattern = '^[0-9a-f.:]+:\d+$'
+not_pattern = '^(127\.0\.0\.11:53|172\.(1[6-9]|2\d|3[01])\.\d+\.\d+:8888)$'
+

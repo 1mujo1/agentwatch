@@ -1,0 +1,18 @@
+name = "Untrusted text read"
+description = "The agent read text it did not write and the user did not give (README, docs, web)."
+severity = "info"
+risk_score = 0
+tags = ["AW-UNTRUSTED"]
+type = "match"
+
+[[match]]
+source = "agent"
+kind = "tool"
+field = "input"
+pattern = '(?i)(readme|\.md$|/docs?/)'
+
+[[match]]
+source = "agent"
+kind = "tool"
+field = "tool"
+pattern = '^(WebFetch|WebSearch)$'

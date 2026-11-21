@@ -1,0 +1,9 @@
+name = "Off-task action after untrusted input"
+description = "Right after reading untrusted text, the agent touched secrets or used a network tool."
+severity = "medium"
+risk_score = 63
+tags = ["AW-INJECT"]
+type = "sequence"
+first = "AW-UNTRUSTED"
+then = ["AW-SECRETS", "AW-NETTOOL", "AW-EGRESS", "AW-BLOCKED"]
+within_seconds = 120

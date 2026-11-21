@@ -1,0 +1,15 @@
+name = "Suspicious package (typosquat)"
+description = "A package install/download whose name is 1-2 letters away from a popular package."
+severity = "medium"
+risk_score = 47
+tags = ["AW-SUPPLY"]
+type = "typosquat"
+max_distance = 2
+popular = ["requests", "numpy", "pandas", "flask", "django", "urllib3",
+           "boto3", "pytest", "setuptools", "six", "pyyaml", "cryptography"]
+
+[[match]]
+source = "audit"
+kind = "exec"
+field = "cmdline"
+pattern = '\bpip3?\b.*\b(install|download)\b'

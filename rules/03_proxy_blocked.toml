@@ -1,0 +1,10 @@
+name = "Blocked outbound request"
+description = "The proxy refused a request to a host that is not on the allow-list."
+severity = "medium"
+risk_score = 47
+tags = ["AW-BLOCKED"]
+type = "match"
+
+[[match]]
+source = "proxy"
+kind = "blocked"

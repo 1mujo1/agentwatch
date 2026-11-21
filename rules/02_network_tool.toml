@@ -1,0 +1,12 @@
+name = "Network tool used"
+description = "The agent ran a classic data-transfer tool."
+severity = "low"
+risk_score = 21
+tags = ["AW-NETTOOL"]
+type = "match"
+
+[[match]]
+source = "audit"
+kind = "exec"
+field = "comm"
+pattern = '^(curl|wget|nc|ncat|socat|scp|ftp)$'
